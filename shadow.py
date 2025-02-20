@@ -4,7 +4,7 @@ import random
 import threading
 import subprocess
 
-TOKEN = "8036559880:AAEMi_tNaXTXzs379Be97lyoNDXcF_FXdEs"  # Replace with your bot token
+TOKEN = "7716572295:AAFT2xqv3JdI-fATd_QiGtJxH2LqVnDQB_k"  # Replace with your bot token
 bot = telebot.TeleBot(TOKEN)
 
 active_attacks = {}
